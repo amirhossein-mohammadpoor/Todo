@@ -12,10 +12,12 @@ const useStyle = makeStyles({
     marginBottom: "10px"
   },
   checkedCard: {
-    background: "linear-gradient(to right, lime , green)"
+    background: "linear-gradient(to right, lime , green)",
+    transition: "1s"
   },
   notCheckedCard: {
-    background: "linear-gradient(to right, white , silver)"
+    background: "linear-gradient(to right, white , silver)",
+    transition: "1s"
   }
 })
 
@@ -45,7 +47,7 @@ const ToDoList = props => {
                 key={item.id}
                 className={doneItems.includes(item.id) ?
                   classes.checkedCard
-                  : 
+                  :
                   classes.notCheckedCard}>
                 <Item
                   index={index}
