@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom"
 import TextField from '@material-ui/core/TextField'
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/button"
+import { v4 as uuidv4 } from 'uuid'
 
 const Create = props => {
   const history = useHistory()
@@ -24,7 +25,7 @@ const Create = props => {
   const handleSubmit = e => {
     e.preventDefault()
     props.addTodo({
-      id: ((100000 * Math.random()) | 0) + "",
+      id: uuidv4(),
       text,
       date,
       done: false
@@ -32,7 +33,7 @@ const Create = props => {
     history.push("/")
     const cacheItems = JSON.parse(localStorage.getItem("items"))
     cacheItems.push({
-      id: ((100000 * Math.random()) | 0) + "",
+      id: uuidv4(),
       text,
       date,
       done: false
