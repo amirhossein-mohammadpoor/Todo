@@ -9,9 +9,16 @@ import Button from "@material-ui/core/Button"
 import Checkbox from "@material-ui/core/Checkbox"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
+import { useSpring, animated } from 'react-spring'
 
-const Item = ({ text, date, id, deleteTodo, checkTodo }) => {
-  const history = useHistory()  
+const Item = ({ text, date, id, deleteTodo, checkTodo, index }) => {
+  const history = useHistory()
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    config: { duration: 200 },
+    delay: 200 * index
+  })
 
   const handleEditTodo = () => {
     history.push(`/edit/${id}`)
@@ -27,21 +34,23 @@ const Item = ({ text, date, id, deleteTodo, checkTodo }) => {
   }
 
   return (
-    <Card>
-      <CardContent>
-        <Grid container direction="row" justify="space-between">
-          <Typography>
-            {text}
-          </Typography>
-          <Typography>
-            {date}
-          </Typography>
-        </Grid>
-        <Button onClick={() => handleEditTodo(id)}>ویرایش</Button>
-        <Button onClick={() => handleDeleteTodo(id)}>پاک کردن </Button>
-        <Checkbox onChange={e => handleChecked(id, e.target.checked)} />
-      </CardContent>
-    </Card>
+    <animated.div style={props}>
+      <Card>
+        <CardContent>
+          <Grid container direction="row" justify="space-between">
+            <Typography>
+              {text}
+            </Typography>
+            <Typography>
+              {date}
+            </Typography>
+          </Grid>
+          <Button onClick={() => handleEditTodo(id)}>ویرایش</Button>
+          <Button onClick={() => handleDeleteTodo(id)}>پاک کردن </Button>
+          <Checkbox onChange={e => handleChecked(id, e.target.checked)} />
+        </CardContent>
+      </Card>
+    </animated.div>
   )
 }
 

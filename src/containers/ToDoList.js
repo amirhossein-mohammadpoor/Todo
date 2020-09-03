@@ -28,14 +28,12 @@ const ToDoList = props => {
   const handleCreateTodo = () => {
     history.push("/create")
   }
-
   return (
     <>
       <Button onClick={handleCreateTodo} className={classes.createButton}>ایجاد</Button>
       <Grid container spacing={2}>
         {
           items.map((item, index) => {
-
             return (
               <Grid
                 item
@@ -45,7 +43,10 @@ const ToDoList = props => {
                 lg={3}
                 xl={2}
                 key={item.id}
-                className={doneItems.includes(item.id)?classes.checkedCard : classes.notCheckedCard}>
+                className={doneItems.includes(item.id) ?
+                  classes.checkedCard
+                  : 
+                  classes.notCheckedCard}>
                 <Item
                   index={index}
                   id={item.id}
