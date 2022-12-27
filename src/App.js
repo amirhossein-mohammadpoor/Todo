@@ -4,7 +4,7 @@ import { LogBox, BackHandler } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 // import { Provider } from "react-redux"
 // import { getInternetCredentials } from "react-native-keychain"
-// import messaging from "@react-native-firebase/messaging"
+import messaging from "@react-native-firebase/messaging"
 // import { PersistGate } from "redux-persist/integration/react"
 import Toast from "react-native-simple-toast"
 
@@ -18,16 +18,18 @@ const App = () => {
   const backClickCount = useRef(0)
   const ref = useRef(ref)
 
-  // const requestUserPermission = async () => {
-  //   const authStatus = await messaging().requestPermission()
-  //   const enabled =
-  //     authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-  //     authStatus === messaging.AuthorizationStatus.PROVISIONAL
+  const requestUserPermission = async () => {
+    const authStatus = await messaging().requestPermission()
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL
 
-  //   if (!enabled) return
+    if (!enabled) return
 
-  //   sendFcmToken()
-  // }
+    const fcmToken = await messaging().getToken()
+
+    console.log(fcmToken)
+  }
 
   // const getTokenFromSecureStorage = async () => {
   //   const response = await getInternetCredentials("tokens")
@@ -55,7 +57,7 @@ const App = () => {
   useEffect(() => {
     // getTokenFromSecureStorage()
     SplashScreen.hide()
-    // requestUserPermission()
+    requestUserPermission()
     BackHandler.addEventListener("hardwareBackPress", handleBackButton)
     return () => {
       BackHandler.removeEventListener("hardwareBackPress", handleBackButton)

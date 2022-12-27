@@ -1,5 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.ridercenter">
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.ridercenter"
+>
 
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -10,10 +13,22 @@
     android:icon="@mipmap/ic_launcher"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:allowBackup="false"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+  >
+
+    <meta-data
+      android:name="com.google.firebase.messaging.default_notification_icon"
+      android:resource="@drawable/badge"
+    />
+    <meta-data
+      android:name="com.google.firebase.messaging.default_notification_color"
+      android:resource="@color/primary"
+      tools:replace="android:resource"
+    />
+
     <meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyCxDRggFzBWS18u-Syu6A0UX7N4suJTAyc"
+      android:value="${GOOGLE_MAP_API_KEY}"
     />
 
     <activity
