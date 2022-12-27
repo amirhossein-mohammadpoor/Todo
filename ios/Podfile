@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '13.0'
 
-target 'AwesomeProject' do
+target 'ridercenter' do
   config = use_native_modules!
 
   use_react_native!(
@@ -15,7 +15,7 @@ target 'AwesomeProject' do
   pod 'react-native-config', :path => '../node_modules/react-native-config'    
   pod 'react-native-config/Extension', :path => '../node_modules/react-native-config'
 
-  target 'AwesomeProjectTests' do
+  target 'ridercenterTests' do
     inherit! :complete
     # Pods for testing
   end
