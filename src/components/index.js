@@ -1,8 +1,0 @@
-export { default as Checkbox } from "./Checkbox"
-export { default as Text } from "./Text"
-export { default as Card } from "./Card"
-export { default as TextField } from "./TextField"
-export { default as Switch } from "./Switch"
-export { default as IconButton } from "./IconButton"
-export { default as LoadingMore } from "./LoadingMore"
-export { default as PageLoader } from "./PageLoader"
